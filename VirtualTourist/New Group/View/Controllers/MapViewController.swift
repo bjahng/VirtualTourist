@@ -13,7 +13,7 @@ import CoreData
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    var dataController:DataController!
+    var dataController: DataController!
     var pins = [Pin]()
     let defaults = UserDefaults.standard
     
@@ -21,11 +21,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.action(gestureRecognizer:)))
-        longPressGesture.minimumPressDuration = 1.0
         mapView.addGestureRecognizer(longPressGesture)
         
-        persistMapLocation()
-        mapView.delegate = self
+        getStartingMapLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +33,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @objc func action(gestureRecognizer:UIGestureRecognizer) {
-        if gestureRecognizer.state == .ended {
+        if gestureRecognizer.state == .began {
             let touchPoint = gestureRecognizer.location(in: mapView)
             let newCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
             let annotation = MKPointAnnotation()
@@ -45,11 +43,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let pin = Pin(context: dataController.viewContext)
             pin.latitude = annotation.coordinate.latitude
             pin.longitude = annotation.coordinate.longitude
+            pins.append(pin)
         }
         try? dataController.viewContext.save()
     }
     
-    func persistMapLocation() {
+    func getStartingMapLocation() {
         defaults.synchronize()
         
         if let region = defaults.object(forKey: "MapViewRegion") as! [CLLocationDegrees]! {
@@ -74,8 +73,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 newAnnotation.coordinate.longitude = CLLocationDegrees(pin.longitude)
                 pinAnnotations.append(newAnnotation)
             }
+            mapView.removeAnnotations(mapView.annotations)
             mapView.addAnnotations(pinAnnotations)
         }
+    }
+    
+    func getSelectedPin(_ annotation: MKAnnotation) -> Pin? {
+        for pin in pins {
+            let coord = annotation.coordinate
+            if coord.latitude == pin.latitude && coord.longitude == pin.longitude {
+                return pin
+            }
+        }
+        return nil
     }
     
     //MARK: mapView data model methods
@@ -103,7 +113,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let controller = storyboard!.instantiateViewController(withIdentifier: "AlbumViewController") as! AlbumViewController
+        controller.dataController = dataController
         controller.coordinates = CLLocationCoordinate2D(latitude: (view.annotation?.coordinate.latitude)!, longitude: (view.annotation?.coordinate.longitude)!)
+        
+        if let selectedPin = getSelectedPin(view.annotation!) {
+            controller.pin = selectedPin
+            controller.coordinates = CLLocationCoordinate2D(latitude: selectedPin.latitude, longitude: selectedPin.longitude)
+        }
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
+        
         navigationController?.pushViewController(controller, animated: true)
     }
 

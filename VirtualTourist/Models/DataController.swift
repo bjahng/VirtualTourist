@@ -11,13 +11,13 @@ import CoreData
 
 class DataController {
     
-    let persistentContainer:NSPersistentContainer
+    let persistentContainer: NSPersistentContainer
     
-    var viewContext:NSManagedObjectContext {
+    var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
-    let backgroundContext:NSManagedObjectContext!
+    let backgroundContext: NSManagedObjectContext!
     
     init(modelName:String) {
         persistentContainer = NSPersistentContainer(name: modelName)
@@ -48,11 +48,9 @@ class DataController {
 // MARK: - Autosaving
 
 extension DataController {
-    func autoSaveViewContext(interval:TimeInterval = 60) {
-        print("autosaving")
-        
+    func autoSaveViewContext(interval: TimeInterval = 60) {
         guard interval > 0 else {
-            print("cannot set negative autosave interval")
+            debugPrint("Cannot set negative autosave interval")
             return
         }
         
@@ -65,4 +63,3 @@ extension DataController {
         }
     }
 }
-

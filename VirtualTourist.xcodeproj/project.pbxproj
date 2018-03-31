@@ -15,6 +15,10 @@
 		84C03FAF202D17A80099D95B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C03FAD202D17A80099D95B /* LaunchScreen.storyboard */; };
 		84C03FBB2032132F0099D95B /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03FBA2032132F0099D95B /* AlbumViewController.swift */; };
 		84C03FBD2032530D0099D95B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03FBC2032530D0099D95B /* DataController.swift */; };
+		84C03FBF2034B9A60099D95B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03FBE2034B9A60099D95B /* CollectionViewCell.swift */; };
+		84C03FC3203503950099D95B /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03FC2203503950099D95B /* FlickrClient.swift */; };
+		84C03FC5203507740099D95B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03FC4203507740099D95B /* Constants.swift */; };
+		84C03FCB203E922F0099D95B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C03FCA203E922F0099D95B /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		84C03FB0202D17A80099D95B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C03FBA2032132F0099D95B /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		84C03FBC2032530D0099D95B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		84C03FBE2034B9A60099D95B /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		84C03FC2203503950099D95B /* FlickrClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
+		84C03FC4203507740099D95B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		84C03FCA203E922F0099D95B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,8 @@
 			children = (
 				84C03FA8202D17A80099D95B /* VirtualTourist.xcdatamodeld */,
 				84C03FBC2032530D0099D95B /* DataController.swift */,
+				84C03FC2203503950099D95B /* FlickrClient.swift */,
+				84C03FC4203507740099D95B /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -83,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				84C03FA5202D17A80099D95B /* Main.storyboard */,
+				84C03FCA203E922F0099D95B /* UIViewControllerExtension.swift */,
 			);
 			name = Views;
 			path = "New Group/Views";
@@ -93,6 +104,7 @@
 			children = (
 				84C03FA3202D17A80099D95B /* MapViewController.swift */,
 				84C03FBA2032132F0099D95B /* AlbumViewController.swift */,
+				84C03FBE2034B9A60099D95B /* CollectionViewCell.swift */,
 			);
 			name = Controllers;
 			path = "New Group/View/Controllers";
@@ -181,9 +193,13 @@
 			files = (
 				84C03FBD2032530D0099D95B /* DataController.swift in Sources */,
 				84C03FBB2032132F0099D95B /* AlbumViewController.swift in Sources */,
+				84C03FCB203E922F0099D95B /* UIViewControllerExtension.swift in Sources */,
+				84C03FBF2034B9A60099D95B /* CollectionViewCell.swift in Sources */,
 				84C03FA4202D17A80099D95B /* MapViewController.swift in Sources */,
 				84C03FA2202D17A80099D95B /* AppDelegate.swift in Sources */,
 				84C03FAA202D17A80099D95B /* VirtualTourist.xcdatamodeld in Sources */,
+				84C03FC3203503950099D95B /* FlickrClient.swift in Sources */,
+				84C03FC5203507740099D95B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
