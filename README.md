@@ -6,7 +6,7 @@ VirtualTourist lets you travel the world via Flickr images.  Put a pin on the ma
 - When a pin is tapped, the collection view will show up to 15 random images from Flickr that were taken at that particular GPS location
 - To get new random images, click on the "New Collection" button at the bottom of the collection view
 - To delete a particular image, tap it and the images will adjust the display automatically
-- All pins and images will persist until manually changed
+- All pins and images will persist until manually updated
 
 ![NewYork](https://github.com/bjahng/VirtualTourist/blob/master/Screenshots/NewYork.png)
 ![NewYorkCollection](https://github.com/bjahng/VirtualTourist/blob/master/Screenshots/NewYorkCollection.png)
